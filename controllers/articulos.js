@@ -92,13 +92,18 @@ const httpArticulos = {
 
     getListarStock: async (req, res) => {
         try {
-            const totalStock = articulo.reduce((total, articulo) => total + articulo.stock, 0);
+            // Obtener todos los artículos desde la base de datos
+            const articulos = await articulo.find(); // Falta este await en tu código original
+    
+            // Calcular el total del stock
+            const totalStock = articulos.reduce((total, articulo) => total + articulo.stock, 0);
+    
             res.json({ totalStock });
-        }catch{
-            res.status(400).json({ error: 'Error al obtener stock' })
+        } catch (error) {
+            res.status(400).json({ error: 'Error al obtener stock' });
             console.log(error);
         }
-    }       
+    }     
 }
 
 export default httpArticulos
