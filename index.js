@@ -32,6 +32,7 @@ app.use("/api/", httpUsuarios);
 // Servir archivos estáticos desde la carpeta 'public' (donde copiaste los archivos de dist)
 app.use(express.static('dist'));
 
+
 app.listen(process.env.PORT, () => {
     console.log(`Servidor escuchando en el puerto ${process.env.PORT}`);
     
